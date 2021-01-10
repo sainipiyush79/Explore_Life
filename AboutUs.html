@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}About Us{% endblock %}
+
+{% block page_content %}
+<link rel="stylesheet" href="{{ url_for('static', filename =  'about.css') }}" >
+<div class="container">
+  <h1>The Kipwich Story!<h1>
+  <p>Abdel casually mentioned one day that he had never eaten the sweet dairy deliciousness known as a chipwich.  I cried out, “You fool!  You’d better add it to your bucket list.”  Thus, Kipwich was born.  Here at Kipwich, we are all about focusing on today because nobody knows if they’ll be here tomorrow.  Life is short, and we firmly believe that everybody should do what they want to while they still have the chance.  We’re all gonna kick the bucket sooner or later.  But before this time comes, we would like to kick you in the pants and tell you to live life to the fullest right now.</p>
+</div>
+<h1>About Us</h1>
+<div class= "parent">
+  <div class= "child">
+    <img src="static/image/abdel.jpg">
+    <br>
+    <h3>Abdel</h3>
+  </div>
+  <div class= "child">
+    <img src="static/image/jordan.jpg">
+    <br>
+    <h3>Jordan</h3>
+  </div>
+  <div class= "child">
+    <img src="static/image/piyush.jpg">
+    <br>
+    <h3>Piyush</h3>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<p hidden id="check">{{user.username}}</p>
+<script>
+  if($("#check").text()==""){
+    $("#logout").hide(); 
+    $("#profile").hide();
+    $("#settings").hide();  
+  }
+  else{
+    $("#signup").hide(); 
+    $("#login").hide();
+  }  
+</script>
+{% endblock %}

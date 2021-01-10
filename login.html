@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+<link rel="stylesheet" href="{{ url_for('static', filename =  'login.css') }}">
+
+<h1 class="donow"> Stop Wasting Your Life!</h1>
+<form class="cont" method = "POST" action = "/Login">
+	<h1>Sign In</h1>
+	{{ form.hidden_tag()}}
+    {{ wtf.form_field(form.username) }}
+    {{ wtf.form_field(form.password) }} 
+    {{ wtf.form_field(form.remember) }} 
+    {% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<p class="flash">{{messages[0]}}</p> 
+		{% endif %}
+	{% endwith %}
+	<button class="btn btn-primary" type="submit"> Sign In </button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $("#logout").hide(); 
+    $("#profile").hide();
+    $("#settings").hide();  
+</script>
+{% endblock %}
+

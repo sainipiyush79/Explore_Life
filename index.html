@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Kipwich{% endblock %}
+
+{% block page_content %}
+<style>
+    body {  
+        background-color: #cccccc;
+    }
+</style>
+<div class="centerIt">
+    <h1 class="head"> KIPWICH </h1>
+    <img class="imgf" alt="Responsive image" src="{{url_for('static', filename ='image/home2.jpg')}}" >
+    <h2 class="head2"> Exciting Adventures Await</h2>
+    <h3> Make a bucket list and fill it with dreams that have no boundaries!</h3>
+    <a href="{{ url_for('signup')}}"  class="btn btn-primary"> Sign Up Today </a> 
+    <a href="{{ url_for('login')}}"  class="btn btn-primary"> Login </a> 
+</div>
+{% endblock %}
+
+{% block scripts %}
+<p hidden id="check">{{user.username}}</p>
+<p hidden id="check2">{{user.background}}</p>
+<script>
+        document.body.style.backgroundColor= $("#check2").text();
+    if($("#check").text()==""){
+        $("#logout").hide(); 
+        $("#profile").hide();
+        $("#settings").hide();  
+    }
+    else{
+        $("#signup").hide(); 
+        $("#login").hide();
+    }
+</script>
+{% endblock %}
+

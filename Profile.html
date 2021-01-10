@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+<link rel="stylesheet" href="{{ url_for('static', filename =  'profile.css') }}" >
+<h2> The purpose of life, after all, is to live it, to taste experience to the utmost, to reach out eagerly and without fear for newer and richer experience. ~Eleanor Roosevelt </h2>
+<div class="parent">
+  <div class= "child" >
+    <h1>Hi {{ user.username }}! <br> Add to Your List </h1>
+    <form method = "POST" action = "/Profile" class = "yams">
+      {{ form.hidden_tag() }}
+      {{ wtf.form_field(form.activity) }}
+      {{ form.submit(class_="btn btn-info")}}
+    </form>
+    {%for activity in all_activities%}
+      <li>{{activity.activity}} <a href="/update/{{activity.id}}"><i class="fa fa-edit"></i></a> <a href="/delete/{{activity.id}}"> <i class="fa fa-trash"></i></a></li>
+    {%endfor%}
+  </div>
+  <div class= "child" >
+    <h1>Community Bucket List</h1>
+      <form method = "POST" action = "/Profile" class = "yams">
+        {{ form2.hidden_tag() }}
+        {{ wtf.form_field(form2.activity) }}
+        {{form2.submit2(class_="btn btn-info")}}
+      </form>
+      {%for activity in c_all_activities%}
+        <li>{{activity.activity}} <a href="/cupdate/{{activity.id}}"><i class="fa fa-edit"></i></a> <a href="/cdelete/{{activity.id}}"> <i class="fa fa-trash"></i></a></li>
+      {%endfor%}
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<p hidden id="check2">{{user.background}}</p>
+  <script>
+    document.body.style.color= "white"
+    document.body.style.color= $("#check2").text();
+    $("#login").hide(); 
+    $("#signup").hide(); 
+  </script>
+{% endblock %}

@@ -1,0 +1,42 @@
+body{
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(image/us.jpg) no-repeat center center fixed; ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+h1{
+  text-align:center;
+  color:white;
+  border-bottom: 4px solid white;
+  display:table;
+  margin: 50px auto 5px auto;
+  padding: 0 10px;
+}
+h3{
+  color:white;
+  margin:30px 0px;
+  display:inline;
+  border-bottom: 4px solid white;
+}
+.parent{
+  margin-top: 30px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.child{
+  flex: 33.33%;
+  padding: 5px;
+}
+
+img{
+  border-radius: 50%;
+  width:300px;
+  height:300px;
+  overflow: hidden;
+}
+p{
+  font-size: medium;
+  font-weight: normal;;
+}

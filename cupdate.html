@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Update Community Activity{% endblock %}
+
+{% block page_content %}
+<style>
+    body {  
+      background-color: white;
+      
+    }
+    #space{
+        margin: 60px;
+    }
+</style>
+<div id="space">
+<h1>Update Community Activity</h1>
+<form action= "/cupdate/{{activity_to_update.id}}" METHOD = "POST">
+	{{ form.hidden_tag() }}
+    {{ wtf.form_field(form.activity) }}
+    <button class="btn btn-secondary" type="submit"> Update </button>
+</form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $("#login").hide(); 
+    $("#signup").hide(); 
+  </script>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Settings{% endblock %}
+
+{% block page_content %}
+<style>
+#ha{
+	background-color: white;
+	border: none;
+}
+#ba{
+	background-color: lightblue;
+	border: none;
+}
+#ca{
+	background-color: lightgrey;
+	border: none;
+}
+#da{
+	background-color: pink;
+	border: none;
+}
+
+form {
+	margin: 0 auto; 
+	width: 250px;
+}
+.lol{
+	margin: 0 auto; 
+	width: 550px;
+}
+</style>
+
+<br>
+<br>
+<br>
+<div class="centerIt">
+<h1>Background color</h1>
+<form name="colors" method="post" action="/background" class = "lol">
+	<input type="submit"  name="btn" value="white" class = "btn btn-light" id="ha">
+	<input type="submit"  name="btn" value="lightblue" class = "btn btn-light" id = ba>
+	<input type="submit"  name="btn" value="lightgrey" class = "btn btn-light" id = ca>
+	<input type="submit"  name="btn" value="pink" class = "btn btn-light" id = da>
+</form>
+
+<br>
+<br>
+<br>
+
+<h1>Current Username: {{ username }}</h1>
+<form class= "cont" method = "POST" action = "/settings" form id="test">
+	{{ form.hidden_tag() }}
+	{{ wtf.form_field(form.username) }}
+    <button class="btn btn-primary" type="submit" form = "test"> Update Username </button>
+</form>
+
+<br>
+<br>
+<br>
+
+<h1>Change Password</h1>
+<form class= "cont" method = "POST" action = "/settings" form id="better">
+	{{ form2.hidden_tag() }}
+	{{ wtf.form_field(form2.currentpassword) }}
+	{{ wtf.form_field(form2.newpassword) }}
+	{{ wtf.form_field(form2.confirm) }}
+	{% with errors = get_flashed_messages(category_filter=["pass"]) %}
+		{% if errors %}
+    		{% for msg in errors %}
+				<h6>{{ msg }}</h6>
+    		{% endfor %}
+		{% endif %}
+	{% endwith %}
+    <button class="btn btn-primary" type="submit" form = "better"> Update Password </button>
+</form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<p hidden id="check">{{user.background}}</p>
+<script>
+	document.body.style.backgroundColor = $("#check").text();
+    $("#login").hide();
+    $("#signup").hide(); 
+</script>
+{% endblock %}
